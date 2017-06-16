@@ -15,7 +15,12 @@ server.get('*', (req, res) => {
         template: `<div>Hello, The visited URL is: {{ url }}</div>`
     });
 
-    renderer.renderToString(app, (err, html) => {
+    const context = {
+        title: 'Context title',
+        meta: `<meta name="description" content="Context description of the page">`
+    };
+
+    renderer.renderToString(app, context, (err, html) => {
 
         //Handle error
         if (err) {
