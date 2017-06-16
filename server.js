@@ -6,19 +6,22 @@ const renderer = require('vue-server-renderer').createRenderer({
 
 
 
+//Abstract creation of the app
+const createApp = require('./app');
+
+
+
 
 server.get('*', (req, res) => {
-    const app = new Vue({
-        data: {
-            url: req.url
-        },
-        template: `<div>Hello, The visited URL is: {{ url }}</div>`
-    });
+
 
     const context = {
+        url: req.url,
         title: 'Context title',
         meta: `<meta name="description" content="Context description of the page">`
     };
+
+    const app = createApp(context);
 
     renderer.renderToString(app, context, (err, html) => {
 
