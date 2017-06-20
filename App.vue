@@ -8,8 +8,11 @@
     export default {
         data() {
             return {
-                url: 'Component data overwite, time to use redux or something'
+                url: 'Component data overwrite, time to use redux or something'
             }
+        },
+        created(){
+            console.log('Created component app');
         }
     }
 
