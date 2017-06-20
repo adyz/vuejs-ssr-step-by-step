@@ -4,6 +4,11 @@ const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
 module.exports = {
 
 
+    output: {
+        path: __dirname + "/dist",
+        publicPath: "/dist"
+    },
+
     module: {
         rules: [
             {

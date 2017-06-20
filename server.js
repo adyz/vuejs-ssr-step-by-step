@@ -15,12 +15,18 @@ expressServer.use('/dist', express.static('dist'));
 
 
 const { createBundleRenderer } = require('vue-server-renderer');
-const renderer = createBundleRenderer(require('./vue-ssr-server-bundle.json'), {
-    template: require('fs').readFileSync('./index.html', 'utf-8')
+
+var layout = require('fs').readFileSync('./index.html', 'utf-8');
+
+const serverManifest = require('./dist/vue-ssr-server-bundle.json');
+const clientManifest = require('./dist/vue-ssr-client-manifest.json');
+const renderer = createBundleRenderer(serverManifest, {
+    template: layout,
+    clientManifest: clientManifest
 });
 
 
-expressServer.get('/*', (req, res) => {
+expressServer.get('/', (req, res) => {
 
     const context = {
         url: req.url,

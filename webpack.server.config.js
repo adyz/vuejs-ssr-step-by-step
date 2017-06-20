@@ -7,6 +7,10 @@ module.exports = merge(baseConfig, {
     // Point entry to your app's server entry file
     entry: './entry-server.js',
 
+    output: {
+        libraryTarget: 'commonjs2',
+        filename: 'dist/bundle.[name].js',
+    },
 
     // This allows webpack to handle dynamic imports in a Node-appropriate
     // fashion, and also tells `vue-loader` to emit server-oriented code when
@@ -14,10 +18,7 @@ module.exports = merge(baseConfig, {
     target: 'node',
 
     // This tells the server bundle to use Node-style exports
-    output: {
-        libraryTarget: 'commonjs2',
-        filename: 'dist/bundle.server.js',
-    },
+
 
     // For bundle renderer source map support
     devtool: 'source-map',

@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack:client": "webpack --config webpack.client.config.js --watch",
-    "webpack:server": "webpack --config webpack.server.config.js --watch"
+    "webpack:server": "webpack --config webpack.server.config.js --watch",
+    "node_server": "node ./server.js",
+    "dev": "npm run webpack:server & npm run webpack:client & npm run node_server"
   },
   "author": "",
   "license": "ISC",
