@@ -1,6 +1,7 @@
 <template>
     <div id="app">
 
+        <h2>Name: {{name}}</h2>
         <p>Abstracted the new Vue in a template</p>
         <p>The visited URL is: {{ url }} <input v-model="url"></p>
 
@@ -25,7 +26,14 @@
         },
         created(){
             console.log('Created component app');
-        }
+        },
+        computed: {
+            // display the item from store state.
+
+            name: function(){
+                return this.$store.state.name;
+            }
+        },
     }
 
 
