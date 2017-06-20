@@ -1,10 +1,7 @@
-import Vue from 'vue'
-import App from './App.vue'
+import { createApp } from './app'
 
-var app = new Vue({
-    // the root instance simply renders the App component.
-    render: h => h(App)
+const { app, router } = createApp();
+
+router.onReady(() => {
+    app.$mount('#app')
 });
-
-
-app.$mount('#app');

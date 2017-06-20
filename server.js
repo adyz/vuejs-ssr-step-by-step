@@ -37,8 +37,21 @@ expressServer.get('*', (req, res) => {
     };
 
 
+    const errorHandler = err => {
+        if (err && err.code === 404) {
+            res.status(404).end('404 | Page Not Found')
+        } else {
+            // Render Error Page or Redirect
+            res.status(500).end('500 | Internal Server Error');
+            console.error(`error during render : ${req.url}`);
+            console.error(err)
+        }
+    };
+
 
     renderer.renderToStream(context)
+        .on('error', errorHandler)
+        .on('end', () => console.log(`whole request: end`))
         .pipe(res)
 });
 

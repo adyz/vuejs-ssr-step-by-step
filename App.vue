@@ -1,5 +1,17 @@
 <template>
-    <div id="app">Abstracted the new Vue in a template - The visited URL is: {{ url }} <input v-model="url"> </div>
+    <div id="app">
+
+        <p>Abstracted the new Vue in a template</p>
+        <p>The visited URL is: {{ url }} <input v-model="url"></p>
+
+
+        <ul>
+            <li><router-link to="/" exact>Home</router-link></li>
+            <li><router-link to="/item">Item</router-link></li>
+        </ul>
+        <router-view class="view"></router-view>
+
+    </div>
 </template>
 
 
