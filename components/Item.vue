@@ -1,10 +1,11 @@
 <template>
     <div>
-
-        <h1>Item:</h1>
-        <h2>Name: {{name}}</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam consequatur eligendi illo inventore laudantium minima minus nam neque non numquam odit omnis quae quaerat, qui reiciendis repudiandae unde, velit, voluptates.</p>
-        <input type="text" v-on:change="update">
+        <app-header></app-header>
+        <h2>Item Title: {{name}}</h2>
+        <label>
+            <p>Update the input bellow to change the layout store</p>
+            <input v-on:change="update">
+        </label>
         
     </div>
 
@@ -12,6 +13,8 @@
 
 
 <script>
+
+    import AppHeader from './partials/Header.vue';
 
     export default {
         computed: {
@@ -27,6 +30,9 @@
                 const val = e.target.value;
                 return this.$store.dispatch('updateName', val)
             }
+        },
+        components: {
+            AppHeader
         }
     }
 

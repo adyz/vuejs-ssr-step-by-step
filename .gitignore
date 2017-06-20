@@ -63,5 +63,10 @@ typings/
 .DS_Store
 
 
+# webstorm
+
+.idea
+
+
 #webpack build directory
 dist/

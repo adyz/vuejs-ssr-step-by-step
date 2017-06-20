@@ -1,15 +1,22 @@
 <template>
     <div id="app">
 
-        <h2>Name: {{name}}</h2>
-        <p>Abstracted the new Vue in a template</p>
-        <p>The visited URL is: {{ url }} <input v-model="url"></p>
+        <h1>Welcome to Vue: {{name}}</h1>
+
+        <hr>
+        <p>The visited URL is: <em><strong>{{ url }}</strong></em></p>
+
+        <label>
+            <p>Change this to modify the local data</p>
+            <input v-model="url">
+        </label>
 
 
         <ul>
             <li><router-link to="/" exact>Home</router-link></li>
             <li><router-link to="/item/2">Item 3</router-link></li>
         </ul>
+
         <router-view class="view"></router-view>
 
     </div>
