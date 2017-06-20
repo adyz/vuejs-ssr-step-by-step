@@ -12,14 +12,12 @@ expressServer.use('/dist', express.static('dist'));
 /*
  * Vue
  */
-const renderer = require('vue-server-renderer').createRenderer({
+
+
+const { createBundleRenderer } = require('vue-server-renderer');
+const renderer = createBundleRenderer(require('./vue-ssr-server-bundle.json'), {
     template: require('fs').readFileSync('./index.html', 'utf-8')
 });
-
-
-
-//Abstract creation of the app
-const createApp = require('./app');
 
 
 expressServer.get('/*', (req, res) => {
@@ -32,19 +30,8 @@ expressServer.get('/*', (req, res) => {
 
 
 
-    const app = createApp(context);
-
-    renderer.renderToString(app, context, (err, html) => {
-
-        //Handle error
-        if (err) {
-            res.status(500).end('Internal Server Error');
-            return
-        }
-
-        //If no error, render the html
-        res.end(html)
-    })
+    renderer.renderToStream(context)
+        .pipe(res)
 });
 
 expressServer.listen(8080);
