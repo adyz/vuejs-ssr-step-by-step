@@ -8,7 +8,7 @@
 
         <ul>
             <li><router-link to="/" exact>Home</router-link></li>
-            <li><router-link to="/item">Item</router-link></li>
+            <li><router-link to="/item/2">Item 3</router-link></li>
         </ul>
         <router-view class="view"></router-view>
 
