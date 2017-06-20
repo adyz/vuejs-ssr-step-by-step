@@ -1,11 +1,10 @@
-const createApp = require('./app');
+import Vue from 'vue'
+import App from './App.vue'
 
-// client-specific bootstrapping logic...
-
-const app = createApp({
-    empty: true,
-    url: 'Empty url client'
+var app = new Vue({
+    // the root instance simply renders the App component.
+    render: h => h(App)
 });
 
-// this assumes App.vue template root element has id="app"
+
 app.$mount('#app');

@@ -22,7 +22,7 @@ const renderer = require('vue-server-renderer').createRenderer({
 const createApp = require('./app');
 
 
-expressServer.get('/', (req, res) => {
+expressServer.get('/*', (req, res) => {
 
     const context = {
         url: req.url,
@@ -30,10 +30,9 @@ expressServer.get('/', (req, res) => {
         meta: `<meta name="description" content="Context description of the page">`
     };
 
-    const app = createApp({
-        empty: true,
-        url: 'Empty url server'
-    });
+
+
+    const app = createApp(context);
 
     renderer.renderToString(app, context, (err, html) => {
 
