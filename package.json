@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack:client": "webpack --config webpack.config.js --watch"
+    "webpack:client": "webpack --config webpack.client.config.js --watch"
   },
   "author": "",
   "license": "ISC",

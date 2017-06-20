@@ -2,16 +2,7 @@ const nodeExternals = require('webpack-node-externals');
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
 
 module.exports = {
-    // Point entry to your app's server entry file
-    entry: './entry-client.js',
 
-    // For bundle renderer source map support
-    devtool: 'source-map',
-
-    // This tells the server bundle to use Node-style exports
-    output: {
-        filename: 'dist/bundle.client.js',
-    },
 
     module: {
         rules: [
@@ -37,10 +28,5 @@ module.exports = {
                 exclude: /node_modules/
             },
         ]
-    },
-    resolve: {
-        alias: {
-            vue: 'vue/dist/vue.js'
-        }
     }
 };
