@@ -1,3 +1,5 @@
+var path = require('path');
+
 /*
  * Express server
  */
@@ -5,7 +7,7 @@ const express = require('express');
 const expressServer = express();
 
 
-expressServer.use('/dist', express.static('dist'));
+expressServer.use(express.static(path.join(__dirname, 'dist')));
 
 
 
@@ -26,7 +28,7 @@ const renderer = createBundleRenderer(serverManifest, {
 });
 
 
-expressServer.get('/', (req, res) => {
+expressServer.get('*', (req, res) => {
 
     const context = {
         url: req.url,

@@ -6,7 +6,7 @@ module.exports = {
 
     output: {
         path: __dirname + "/dist",
-        publicPath: "/dist"
+        publicPath: "/" //The static route passed to the static function in express
     },
 
     module: {
