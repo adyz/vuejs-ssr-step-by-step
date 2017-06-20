@@ -1,5 +1,17 @@
-const Vue = require('vue');
-const server = require('express')();
+/*
+ * Express server
+ */
+const express = require('express');
+const expressServer = express();
+
+
+expressServer.use('/dist', express.static('dist'));
+
+
+
+/*
+ * Vue
+ */
 const renderer = require('vue-server-renderer').createRenderer({
     template: require('fs').readFileSync('./index.html', 'utf-8')
 });
@@ -10,10 +22,7 @@ const renderer = require('vue-server-renderer').createRenderer({
 const createApp = require('./app');
 
 
-
-
-server.get('*', (req, res) => {
-
+expressServer.get('/', (req, res) => {
 
     const context = {
         url: req.url,
@@ -21,7 +30,10 @@ server.get('*', (req, res) => {
         meta: `<meta name="description" content="Context description of the page">`
     };
 
-    const app = createApp(context);
+    const app = createApp({
+        empty: true,
+        url: 'Empty url server'
+    });
 
     renderer.renderToString(app, context, (err, html) => {
 
@@ -36,4 +48,4 @@ server.get('*', (req, res) => {
     })
 });
 
-server.listen(8080);
+expressServer.listen(8080);

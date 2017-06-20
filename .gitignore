@@ -59,4 +59,9 @@ typings/
 # dotenv environment variables file
 .env
 
+# mac file sistem
+.DS_Store
 
+
+#webpack build directory
+dist/
