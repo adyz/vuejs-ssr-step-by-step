@@ -12,12 +12,14 @@
         </label>
 
 
-        <ul>
+        <ul style="position: fixed; top:0; left: 0; width:100%; background: #fff; display: block; overflow: auto">
             <li><router-link to="/" exact>Home</router-link></li>
+            <li><router-link to="/about" exact>About</router-link></li>
             <li><router-link to="/item/2">Item 3</router-link></li>
         </ul>
-
-        <router-view class="view"></router-view>
+        <keep-alive>
+            <router-view class="view"></router-view>
+        </keep-alive>
 
     </div>
 </template>
