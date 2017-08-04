@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack:client": "webpack --config webpack.client.config.js --watch",
-    "webpack:server": "webpack --config webpack.server.config.js --watch",
-    "build": "webpack --config webpack.client.config.js && webpack --config webpack.server.config.js",
+    "webpack:client": "webpack --config ./webpack.client.config.js --watch",
+    "webpack:server": "webpack --config ./webpack.server.config.js --watch",
+    "build": "webpack --config ./webpack.client.config.js && webpack --config ./webpack.server.config.js",
     "start": "node ./server.js",
     "dev": "npm run webpack:server & npm run webpack:client & npm run start"
   },
