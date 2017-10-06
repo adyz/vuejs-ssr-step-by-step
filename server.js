@@ -33,7 +33,10 @@ expressServer.get('*', (req, res) => {
     const context = {
         url: req.url,
         title: 'Context title',
-        meta: `<meta name="description" content="Context description of the page">`
+        meta: `
+                <meta name="description" content="Context description of the page">
+                <meta name="viewport" content="width=device-width, user-scalable=no">
+              `
     };
 
 
