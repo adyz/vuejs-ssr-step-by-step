@@ -6,7 +6,7 @@ const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
 
 module.exports = merge(baseConfig, {
     // Point entry to your app's server entry file
-    entry: './entry-client.js',
+    entry: ['./entry-client.js', 'webpack-hot-middleware/client'],
 
     output: {
         filename: 'bundle.[name].js',
@@ -16,6 +16,8 @@ module.exports = merge(baseConfig, {
     devtool: 'source-map',
 
     plugins: [
+
+        new webpack.HotModuleReplacementPlugin(),
 
         // Important: this splits the webpack runtime into a leading chunk
         // so that async chunks can be injected right after it.

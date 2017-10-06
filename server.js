@@ -1,5 +1,7 @@
 var path = require('path');
 
+
+
 /*
  * Express server
  */
@@ -7,6 +9,20 @@ const express = require('express');
 const expressServer = express();
 
 
+/*
+ * Only for dev
+ */
+var webpack = require('webpack');
+var webpackConfig = require('./webpack.client.config');
+var compiler = webpack(webpackConfig);
+expressServer.use(require("webpack-dev-middleware")(compiler, {
+    noInfo: true, publicPath: webpackConfig.output.publicPath
+}));
+expressServer.use(require("webpack-hot-middleware")(compiler));
+
+
+
+//Static assets
 expressServer.use(express.static(path.join(__dirname, 'dist')));
 
 
